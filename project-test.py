@@ -40,7 +40,7 @@ ddate = year1.groupby('Date')['Wind'].mean()
 
 yearByDate = year1.groupby('Date')
 
-yearByDateMean = yearByDate.agg('median').reset_index()
+yearByDateMean = yearByDate.agg('mean').reset_index()
 
 
 #test =ddate.to_frame()
@@ -50,7 +50,9 @@ plt.plot(yearByDateMean.Date, yearByDateMean.Wind)
 plt.plot(yearByDateMean.Date, yearByDateMean.Solar)
 plt.plot(yearByDateMean.Date, yearByDateMean.Geothermal)
 plt.plot(yearByDateMean.Date, yearByDateMean.Nuclear)
-plt.plot(yearByDateMean.Date, yearByDateMean.Batteries)
+plt.plot(yearByDateMean.Date, yearByDateMean['Natural Gas'])
+plt.plot(yearByDateMean.Date, yearByDateMean.Imports)
+
 
 
 
