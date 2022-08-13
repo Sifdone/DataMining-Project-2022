@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 import glob
 import os
 import datetime
+import numpy as np
 
 """#simple csv merge
 # merging the files
@@ -35,6 +36,17 @@ def transform(name):
 
     return date
 
+def find_outliers_IQR(df):
+
+   q1=df.quantile(0.25)
+
+   q3=df.quantile(0.75)
+
+   IQR=q3-q1
+
+   outliers = df[((df<(q1-1.5*IQR)) | (df>(q3+1.5*IQR)))]
+
+   return outliers
 
 
 files_joined = os.path.join('D:\\Documents\\UNIVERSITY\\project_mining_2022\\DataMining-Project-2022\\dataset\\sources', "*.csv")
@@ -42,24 +54,30 @@ files_joined = os.path.join('C:\\Users\\Dimitra\\Documents\\GitHub\\DataMining-P
 files = glob.glob(files_joined)
 df = pd.concat([pd.read_csv(fp).assign(Date=transform(os.path.basename(fp).split('.')[0]))
 for fp in files])
-print(df)    
 
+print(df) 
 
-#std =df.std(axis=0)
-#print(std)
-#mn = df.mean(axis=0)
-#print(mn)
-#md = df.median(axis=0)
-#print(md)
 
 #dt = df.groupby('Date')
 #dd = dt.get_group('2019-01-01')
 #print(dd)
-mn = df.describe()[['Wind','Geothermal','Solar']]
+mn = df.describe()[['Wind','Geothermal','Natural Gas' ]]
+
+
 print(mn)
 
+outliers = find_outliers_IQR(df['Natural Gas'])
 
-plt.plot(df.Date, df.Wind)
+print("number of outliers: "+ str(len(outliers)))
+
+print("max outlier value: "+ str(outliers.max()))
+
+print("min outlier value: "+ str(outliers.min()))
+
+print(outliers)
+
+
+plt.plot(df.Date, df['Natural Gas'])
 
 plt.show()
 

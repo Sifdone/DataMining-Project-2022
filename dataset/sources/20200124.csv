@@ -1,4 +1,4 @@
-Time,Solar,Wind,Geothermal,Biomass,Biogas,Small hydro,Coal,Nuclear,Natural gas,Large hydro,Batteries,Imports,Other
+Time,Solar,Wind,Geothermal,Biomass,Biogas,Small hydro,Coal,Nuclear,Natural Gas,Large Hydro,Batteries,Imports,Other
 00:00,-38,417,889,354,218,187,16,2271,8396,1093,0,7747,0
 00:05,-38,405,889,356,216,184,17,2271,8249,1083,0,7878,0
 00:10,-38,394,891,334,216,179,16,2271,8189,1077,0,7912,0
