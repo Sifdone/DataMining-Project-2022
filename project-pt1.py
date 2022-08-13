@@ -51,13 +51,17 @@ for fp in files])
 print(df)    
 
 
-#std =df.std(axis=0)
+std =df.std(axis=0)
 #print(std)
 
 #mn = df.mean(axis=0)
 #print(mn)
-#md = df.median(axis=0)
+md = df.median(axis=0)
 #print(md)
+
+dt = df.groupby('Date')
+dt.get_group('2019-01-01')
+print(dt.get_group('2019-01-01'))
 
 plt.plot(df.Date, df.Wind)
 
