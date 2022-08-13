@@ -38,6 +38,7 @@ def transform(name):
 
 
 files_joined = os.path.join('D:\\Documents\\UNIVERSITY\\project_mining_2022\\DataMining-Project-2022\\dataset\\sources', "*.csv")
+files_joined = os.path.join('C:\\Users\\Dimitra\\Documents\\GitHub\\DataMining-Project-2022\\dataset\\sources', "*.csv")
 files = glob.glob(files_joined)
 df = pd.concat([pd.read_csv(fp).assign(Date=transform(os.path.basename(fp).split('.')[0]))
 for fp in files])
