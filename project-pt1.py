@@ -44,19 +44,20 @@ def transform(name):
 
 
 
-files_joined = os.path.join('D:\\Documents\\UNIVERSITY\\project_mining_2022\\dataset\\sources', "*.csv")
+files_joined = os.path.join('D:\\Documents\\UNIVERSITY\\project_mining_2022\\DataMining-Project-2022\\dataset\\sources', "*.csv")
 files = glob.glob(files_joined)
 df = pd.concat([pd.read_csv(fp).assign(Date=transform(os.path.basename(fp).split('.')[0]))
 for fp in files])
 print(df)    
 
-std =df['Wind'].std()
 
-mn = df["Wind"].mean()
+#std =df.std(axis=0)
+#print(std)
 
-md = df['Wind'].median()
-
-
+#mn = df.mean(axis=0)
+#print(mn)
+#md = df.median(axis=0)
+#print(md)
 
 plt.plot(df.Date, df.Wind)
 
