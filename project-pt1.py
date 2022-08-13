@@ -5,7 +5,7 @@ import glob
 import os
 import datetime
 
-"""
+"""#simple csv merge
 # merging the files
 files_joined = os.path.join('D:\\Documents\\UNIVERSITY\\project_mining_2022\\dataset\\sources', "*.csv")
 #print(files_joined)
@@ -17,13 +17,6 @@ print("** Merging multiple csv files into a single pandas dataframe **")
 # Merge files by joining all files
 dataframe = pd.concat(map(pd.read_csv, list_files), ignore_index=True)
 print(dataframe)
-
-test = dataframe.loc[dataframe['Time'].isin(['00:00', '08:00', '16:00', '23:00'])]
-
-
-plt.plot(test.Time, test.Wind)
-#plt.plot(test.Time, test.Geothermal)
-plt.show()
 """
 
 def transform(name):
@@ -51,17 +44,19 @@ for fp in files])
 print(df)    
 
 
-std =df.std(axis=0)
+#std =df.std(axis=0)
 #print(std)
-
 #mn = df.mean(axis=0)
 #print(mn)
-md = df.median(axis=0)
+#md = df.median(axis=0)
 #print(md)
 
-dt = df.groupby('Date')
-dt.get_group('2019-01-01')
-print(dt.get_group('2019-01-01'))
+#dt = df.groupby('Date')
+#dd = dt.get_group('2019-01-01')
+#print(dd)
+mn = df.describe()[['Wind','Geothermal','Solar']]
+print(mn)
+
 
 plt.plot(df.Date, df.Wind)
 
